@@ -1,0 +1,221 @@
+session_id,location_name,genre,time_of_day,weather,crowd_level,month,session_rating
+1,Ha'penny Bridge,portrait,golden_hour,rain,2,4,5.0
+2,Phoenix Park,portrait,blue_hour,sunny,5,7,4.6
+3,Poolbeg Lighthouse,portrait,golden_hour,sunny,5,4,6.4
+4,Howth Cliffs,architecture,golden_hour,rain,1,3,6.5
+5,Temple Bar,landscape,golden_hour,overcast,3,2,6.0
+6,Grand Canal Dock,portrait,golden_hour,rain,5,5,5.1
+7,St Stephen's Green,architecture,midday,fog,1,9,3.7
+8,Trinity College,landscape,midday,sunny,1,11,4.6
+9,Dun Laoghaire Pier,landscape,night,overcast,1,7,5.2
+10,Killiney Hill,landscape,golden_hour,rain,2,11,5.2
+11,Portobello,portrait,midday,overcast,5,12,3.0
+12,Smithfield,architecture,midday,overcast,3,1,2.8
+13,Great South Wall,portrait,blue_hour,fog,3,2,5.7
+14,Iveagh Gardens,landscape,golden_hour,fog,4,11,6.7
+15,Dollymount Strand,landscape,golden_hour,rain,5,7,5.3
+16,Ha'penny Bridge,architecture,golden_hour,overcast,5,8,5.2
+17,Phoenix Park,portrait,blue_hour,overcast,2,11,7.5
+18,Poolbeg Lighthouse,portrait,midday,fog,5,5,3.4
+19,Howth Cliffs,portrait,blue_hour,sunny,5,5,6.0
+20,Temple Bar,landscape,golden_hour,fog,2,8,6.6
+21,Grand Canal Dock,landscape,night,overcast,5,2,4.7
+22,St Stephen's Green,landscape,blue_hour,overcast,2,6,7.2
+23,Trinity College,portrait,midday,fog,1,2,5.0
+24,Dun Laoghaire Pier,landscape,golden_hour,overcast,5,2,5.2
+25,Killiney Hill,architecture,blue_hour,overcast,2,11,6.7
+26,Portobello,street,golden_hour,fog,2,9,7.7
+27,Smithfield,street,blue_hour,fog,3,8,7.1
+28,Great South Wall,architecture,golden_hour,overcast,1,6,6.6
+29,Iveagh Gardens,street,midday,sunny,1,12,4.4
+30,Dollymount Strand,street,golden_hour,sunny,3,2,6.8
+31,Ha'penny Bridge,landscape,blue_hour,overcast,5,3,5.9
+32,Phoenix Park,architecture,golden_hour,fog,4,4,5.6
+33,Poolbeg Lighthouse,architecture,golden_hour,fog,4,12,5.5
+34,Howth Cliffs,portrait,golden_hour,rain,1,4,5.5
+35,Temple Bar,architecture,golden_hour,overcast,3,8,6.3
+36,Grand Canal Dock,portrait,midday,sunny,1,11,5.1
+37,St Stephen's Green,portrait,night,overcast,2,7,6.2
+38,Trinity College,street,blue_hour,sunny,2,7,5.7
+39,Dun Laoghaire Pier,architecture,golden_hour,fog,3,7,7.2
+40,Killiney Hill,architecture,golden_hour,rain,2,1,5.9
+41,Portobello,portrait,blue_hour,sunny,1,10,7.1
+42,Smithfield,street,golden_hour,sunny,2,2,7.4
+43,Great South Wall,street,midday,overcast,5,10,1.6
+44,Iveagh Gardens,portrait,midday,rain,3,4,2.1
+45,Dollymount Strand,landscape,golden_hour,fog,2,11,7.9
+46,Ha'penny Bridge,architecture,golden_hour,sunny,1,8,7.8
+47,Phoenix Park,portrait,golden_hour,overcast,5,5,6.3
+48,Poolbeg Lighthouse,landscape,night,overcast,3,5,4.1
+49,Howth Cliffs,landscape,midday,sunny,5,5,4.4
+50,Temple Bar,portrait,night,overcast,3,2,6.6
+51,Grand Canal Dock,street,golden_hour,overcast,3,4,7.2
+52,St Stephen's Green,landscape,midday,rain,1,2,2.9
+53,Trinity College,landscape,golden_hour,rain,2,11,6.7
+54,Dun Laoghaire Pier,street,blue_hour,fog,5,1,4.7
+55,Killiney Hill,street,midday,rain,5,9,1.0
+56,Portobello,street,golden_hour,rain,1,6,5.5
+57,Smithfield,street,blue_hour,rain,5,7,4.9
+58,Great South Wall,street,night,overcast,2,3,6.0
+59,Iveagh Gardens,portrait,golden_hour,rain,4,11,5.6
+60,Dollymount Strand,street,golden_hour,sunny,4,1,7.1
+61,Ha'penny Bridge,street,golden_hour,fog,3,5,7.4
+62,Phoenix Park,street,golden_hour,overcast,4,6,6.0
+63,Poolbeg Lighthouse,portrait,night,rain,3,11,3.3
+64,Howth Cliffs,landscape,night,sunny,3,3,6.0
+65,Temple Bar,landscape,golden_hour,fog,3,12,7.8
+66,Grand Canal Dock,architecture,midday,sunny,4,10,2.3
+67,St Stephen's Green,portrait,blue_hour,sunny,5,9,5.9
+68,Trinity College,street,golden_hour,sunny,3,10,6.4
+69,Dun Laoghaire Pier,portrait,blue_hour,rain,5,5,4.3
+70,Killiney Hill,landscape,midday,rain,5,3,1.0
+71,Portobello,architecture,blue_hour,overcast,5,10,5.1
+72,Smithfield,portrait,golden_hour,overcast,4,10,7.6
+73,Great South Wall,landscape,midday,fog,2,9,4.0
+74,Iveagh Gardens,street,blue_hour,rain,5,11,4.3
+75,Dollymount Strand,landscape,golden_hour,overcast,3,4,7.4
+76,Ha'penny Bridge,street,golden_hour,overcast,4,10,7.1
+77,Phoenix Park,portrait,midday,overcast,4,8,3.7
+78,Poolbeg Lighthouse,street,blue_hour,sunny,1,7,6.5
+79,Howth Cliffs,architecture,golden_hour,overcast,1,8,6.9
+80,Temple Bar,architecture,blue_hour,rain,4,10,5.0
+81,Grand Canal Dock,architecture,blue_hour,fog,2,12,7.4
+82,St Stephen's Green,architecture,golden_hour,overcast,3,9,6.8
+83,Trinity College,street,golden_hour,sunny,3,4,6.3
+84,Dun Laoghaire Pier,landscape,night,sunny,2,3,5.7
+85,Killiney Hill,street,blue_hour,sunny,4,7,5.6
+86,Portobello,architecture,midday,overcast,4,7,3.7
+87,Smithfield,portrait,blue_hour,fog,4,1,6.8
+88,Great South Wall,landscape,blue_hour,fog,5,12,6.4
+89,Iveagh Gardens,street,midday,rain,4,8,1.0
+90,Dollymount Strand,landscape,blue_hour,fog,2,8,7.9
+91,Ha'penny Bridge,portrait,night,sunny,1,11,5.5
+92,Phoenix Park,architecture,golden_hour,rain,4,6,4.3
+93,Poolbeg Lighthouse,landscape,golden_hour,fog,3,7,6.7
+94,Howth Cliffs,portrait,midday,sunny,3,4,3.6
+95,Temple Bar,portrait,blue_hour,overcast,2,1,7.9
+96,Grand Canal Dock,street,golden_hour,sunny,5,4,5.9
+97,St Stephen's Green,landscape,blue_hour,overcast,5,10,6.4
+98,Trinity College,portrait,blue_hour,overcast,3,2,7.5
+99,Dun Laoghaire Pier,landscape,midday,fog,4,12,2.7
+100,Killiney Hill,street,golden_hour,rain,5,2,5.1
+101,Portobello,portrait,golden_hour,fog,3,2,6.8
+102,Smithfield,landscape,golden_hour,fog,4,2,6.7
+103,Great South Wall,landscape,blue_hour,fog,2,7,6.5
+104,Iveagh Gardens,landscape,midday,fog,4,7,4.0
+105,Dollymount Strand,landscape,golden_hour,overcast,1,5,8.4
+106,Ha'penny Bridge,street,blue_hour,fog,3,1,6.3
+107,Phoenix Park,landscape,golden_hour,overcast,3,5,6.5
+108,Poolbeg Lighthouse,landscape,midday,overcast,1,4,4.5
+109,Howth Cliffs,architecture,midday,overcast,4,11,3.3
+110,Temple Bar,architecture,blue_hour,sunny,3,4,6.1
+111,Grand Canal Dock,street,golden_hour,rain,4,9,5.0
+112,St Stephen's Green,architecture,night,rain,3,12,3.2
+113,Trinity College,landscape,golden_hour,sunny,2,6,7.4
+114,Dun Laoghaire Pier,street,golden_hour,fog,3,12,7.0
+115,Killiney Hill,landscape,night,overcast,3,4,4.5
+116,Portobello,landscape,golden_hour,overcast,3,1,7.7
+117,Smithfield,landscape,blue_hour,overcast,4,2,6.6
+118,Great South Wall,landscape,midday,fog,3,3,4.6
+119,Iveagh Gardens,landscape,night,fog,1,2,5.8
+120,Dollymount Strand,portrait,midday,sunny,2,3,4.3
+121,Ha'penny Bridge,landscape,golden_hour,overcast,1,9,8.1
+122,Phoenix Park,street,blue_hour,fog,4,8,5.5
+123,Poolbeg Lighthouse,architecture,golden_hour,sunny,5,12,5.2
+124,Howth Cliffs,street,blue_hour,rain,1,3,5.1
+125,Temple Bar,portrait,golden_hour,fog,4,12,6.6
+126,Grand Canal Dock,landscape,golden_hour,rain,3,12,6.0
+127,St Stephen's Green,portrait,blue_hour,rain,5,11,4.6
+128,Trinity College,street,midday,overcast,2,5,4.4
+129,Dun Laoghaire Pier,portrait,golden_hour,rain,5,12,5.1
+130,Killiney Hill,landscape,midday,fog,3,12,3.5
+131,Portobello,landscape,midday,fog,4,2,3.5
+132,Smithfield,architecture,blue_hour,rain,1,2,5.1
+133,Great South Wall,portrait,night,rain,5,1,3.0
+134,Iveagh Gardens,street,midday,fog,3,3,4.3
+135,Dollymount Strand,architecture,blue_hour,fog,1,8,6.8
+136,Ha'penny Bridge,landscape,golden_hour,sunny,2,6,8.0
+137,Phoenix Park,architecture,golden_hour,fog,5,1,5.9
+138,Poolbeg Lighthouse,landscape,golden_hour,sunny,4,9,8.0
+139,Howth Cliffs,portrait,blue_hour,fog,4,1,5.3
+140,Temple Bar,landscape,midday,fog,4,1,2.7
+141,Grand Canal Dock,street,night,fog,4,2,3.5
+142,St Stephen's Green,street,blue_hour,rain,5,1,4.1
+143,Trinity College,portrait,golden_hour,sunny,4,2,6.7
+144,Dun Laoghaire Pier,street,midday,rain,5,12,1.0
+145,Killiney Hill,architecture,night,overcast,4,9,3.7
+146,Portobello,street,night,overcast,1,5,6.1
+147,Smithfield,architecture,golden_hour,rain,1,5,6.6
+148,Great South Wall,architecture,blue_hour,fog,5,8,5.2
+149,Iveagh Gardens,architecture,midday,rain,2,12,1.7
+150,Dollymount Strand,architecture,golden_hour,fog,1,6,8.1
+151,Ha'penny Bridge,architecture,midday,overcast,4,1,2.2
+152,Phoenix Park,landscape,blue_hour,fog,1,9,8.3
+153,Poolbeg Lighthouse,portrait,blue_hour,fog,2,2,6.6
+154,Howth Cliffs,landscape,golden_hour,fog,1,6,8.7
+155,Temple Bar,architecture,night,fog,5,1,4.2
+156,Grand Canal Dock,street,blue_hour,rain,2,12,4.4
+157,St Stephen's Green,portrait,blue_hour,sunny,4,3,6.3
+158,Trinity College,portrait,golden_hour,sunny,3,6,6.5
+159,Dun Laoghaire Pier,street,golden_hour,fog,5,11,6.6
+160,Killiney Hill,street,golden_hour,fog,5,11,5.5
+161,Portobello,street,golden_hour,rain,4,5,5.2
+162,Smithfield,architecture,night,overcast,1,8,6.5
+163,Great South Wall,landscape,blue_hour,fog,3,8,7.4
+164,Iveagh Gardens,street,night,fog,1,4,5.4
+165,Dollymount Strand,landscape,midday,rain,1,11,2.4
+166,Ha'penny Bridge,portrait,midday,sunny,5,12,2.5
+167,Phoenix Park,landscape,blue_hour,overcast,5,6,4.9
+168,Poolbeg Lighthouse,street,midday,overcast,1,11,4.4
+169,Howth Cliffs,landscape,blue_hour,sunny,5,6,7.0
+170,Temple Bar,portrait,night,rain,4,3,2.3
+171,Grand Canal Dock,landscape,midday,rain,2,5,3.0
+172,St Stephen's Green,architecture,night,rain,3,2,3.2
+173,Trinity College,portrait,golden_hour,overcast,4,9,7.1
+174,Dun Laoghaire Pier,architecture,golden_hour,sunny,4,6,6.7
+175,Killiney Hill,landscape,midday,rain,1,11,2.1
+176,Portobello,portrait,midday,rain,5,4,1.3
+177,Smithfield,architecture,night,rain,4,2,2.2
+178,Great South Wall,portrait,golden_hour,fog,1,2,7.1
+179,Iveagh Gardens,street,midday,rain,5,7,1.2
+180,Dollymount Strand,street,night,sunny,4,10,4.2
+181,Ha'penny Bridge,landscape,golden_hour,rain,2,8,5.6
+182,Phoenix Park,street,blue_hour,sunny,3,9,7.1
+183,Poolbeg Lighthouse,landscape,golden_hour,rain,2,2,6.6
+184,Howth Cliffs,architecture,golden_hour,overcast,5,1,5.1
+185,Temple Bar,landscape,golden_hour,overcast,5,4,5.1
+186,Grand Canal Dock,street,midday,overcast,3,3,3.9
+187,St Stephen's Green,portrait,golden_hour,overcast,2,9,7.7
+188,Trinity College,street,golden_hour,sunny,2,1,6.9
+189,Dun Laoghaire Pier,street,midday,sunny,2,5,2.8
+190,Killiney Hill,architecture,midday,sunny,4,8,3.5
+191,Portobello,portrait,midday,overcast,5,1,4.0
+192,Smithfield,landscape,midday,sunny,1,8,5.8
+193,Great South Wall,architecture,blue_hour,fog,4,2,6.7
+194,Iveagh Gardens,landscape,midday,sunny,2,5,4.9
+195,Dollymount Strand,landscape,midday,rain,4,9,1.6
+196,Ha'penny Bridge,portrait,blue_hour,sunny,5,12,6.2
+197,Phoenix Park,architecture,midday,overcast,4,6,3.6
+198,Poolbeg Lighthouse,architecture,midday,sunny,3,7,2.9
+199,Howth Cliffs,landscape,golden_hour,overcast,4,2,5.6
+200,Temple Bar,portrait,golden_hour,sunny,3,3,6.9
+201,Grand Canal Dock,landscape,blue_hour,fog,3,11,7.6
+202,St Stephen's Green,architecture,blue_hour,sunny,3,10,5.9
+203,Trinity College,portrait,midday,overcast,2,11,4.7
+204,Dun Laoghaire Pier,portrait,golden_hour,rain,1,5,6.2
+205,Killiney Hill,architecture,blue_hour,sunny,5,11,6.2
+206,Portobello,landscape,golden_hour,rain,3,6,5.0
+207,Smithfield,street,blue_hour,fog,1,3,7.6
+208,Great South Wall,portrait,golden_hour,overcast,4,7,7.3
+209,Iveagh Gardens,street,golden_hour,rain,5,10,3.7
+210,Dollymount Strand,portrait,golden_hour,sunny,1,5,7.5
+211,Ha'penny Bridge,architecture,midday,fog,4,5,2.3
+212,Phoenix Park,portrait,golden_hour,sunny,3,11,7.2
+213,Poolbeg Lighthouse,architecture,midday,rain,1,4,2.4
+214,Howth Cliffs,portrait,golden_hour,rain,2,3,6.2
+215,Temple Bar,landscape,golden_hour,sunny,4,12,7.3
+216,Grand Canal Dock,street,midday,overcast,5,9,3.2
+217,St Stephen's Green,landscape,golden_hour,sunny,4,1,7.3
+218,Trinity College,portrait,blue_hour,fog,5,7,5.9
+219,Dun Laoghaire Pier,architecture,golden_hour,fog,1,6,6.9
+220,Killiney Hill,architecture,blue_hour,rain,1,7,6.3
