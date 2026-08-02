@@ -17,6 +17,9 @@ export default function Nav() {
           <Link href="/stats" className="hover:text-amber-400 focus:outline-2 focus:outline-amber-400">
             Statistics
           </Link>
+          <Link href="/predict" className="hover:text-amber-400 focus:outline-2 focus:outline-amber-400">
+            Predictor
+          </Link>
           <Link href="/suggest" className="hover:text-amber-400 focus:outline-2 focus:outline-amber-400">
             Suggest a Spot
           </Link>

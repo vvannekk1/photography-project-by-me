@@ -24,3 +24,29 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Accessibility preference overrides */
+.a11y-large-text {
+  font-size: 125%;
+}
+
+.a11y-high-contrast body {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.a11y-high-contrast .text-neutral-400,
+.a11y-high-contrast .text-neutral-500 {
+  color: #e5e5e5 !important;
+}
+
+.a11y-high-contrast .border-neutral-800 {
+  border-color: #ffffff !important;
+}
+
+.a11y-reduced-motion *,
+.a11y-reduced-motion *::before,
+.a11y-reduced-motion *::after {
+  animation-duration: 0.001ms !important;
+  transition-duration: 0.001ms !important;
+}
