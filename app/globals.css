@@ -50,3 +50,54 @@ body {
   animation-duration: 0.001ms !important;
   transition-duration: 0.001ms !important;
 }
+
+/* === Darkroom / contact-sheet design tokens === */
+:root {
+  --ink: #0b0c0a;
+  --paper: #ece6d6;
+  --safelight: #d6472b;
+  --meter-green: #93a87e;
+  --ash: #9b9890;
+  --frame: #2a2924;
+}
+
+body {
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-fraunces), Georgia, serif;
+}
+
+.font-mono-data {
+  font-family: var(--font-plex-mono), ui-monospace, SFMono-Regular, monospace;
+}
+
+@keyframes needle-sweep {
+  from { transform: rotate(-85deg); }
+  to   { transform: rotate(var(--needle-angle, 24deg)); }
+}
+
+.meter-needle {
+  animation: needle-sweep 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.rise-in {
+  animation: rise-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.a11y-reduced-motion .meter-needle,
+.a11y-reduced-motion .rise-in {
+  animation: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .meter-needle, .rise-in {
+    animation: none !important;
+  }
+}

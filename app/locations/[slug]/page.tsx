@@ -14,6 +14,9 @@ export default async function LocationPage({
   const location = getLocationBySlug(slug);
   if (!location) notFound();
 
+  const allLocations = getLocations();
+  const frameNumber = allLocations.findIndex((l) => l.name === location.name) + 1;
+
   const sessions = getSessions().filter((s) => s.location_name === location.name);
   const avgRating =
     sessions.length > 0
@@ -26,37 +29,40 @@ export default async function LocationPage({
 
   return (
     <article>
-      <h1 className="text-3xl font-bold">{location.name}</h1>
+      <p className="font-mono-data text-xs uppercase tracking-[0.2em] text-[var(--safelight)]">
+        N°{String(frameNumber).padStart(2, "0")} · {bestTime}
+      </p>
+      <h1 className="mt-3 font-display text-4xl text-[var(--paper)]">{location.name}</h1>
 
       <div className="mt-4 flex flex-wrap gap-2">
         {location.genres.map((g) => (
           <span
             key={g}
-            className="rounded-full bg-neutral-800 px-3 py-1 text-sm text-amber-400"
+            className="rounded-full border border-[var(--frame)] px-3 py-1 text-sm text-[var(--ash)]"
           >
             {g}
           </span>
         ))}
       </div>
 
-      <p className="mt-6 max-w-2xl text-neutral-300">{location.description}</p>
+      <p className="mt-6 max-w-2xl text-[var(--ash)]">{location.description}</p>
 
       <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <div className="rounded-xl border border-neutral-800 p-5">
-          <p className="text-xs uppercase text-neutral-500">Best time</p>
-          <p className="mt-1 font-semibold">{bestTime}</p>
+        <div className="rounded-xl border border-[var(--frame)] p-5">
+          <p className="font-mono-data text-[10px] uppercase text-[var(--ash)]">Best time</p>
+          <p className="mt-1 font-semibold text-[var(--paper)]">{bestTime}</p>
         </div>
-        <div className="rounded-xl border border-neutral-800 p-5">
-          <p className="text-xs uppercase text-neutral-500">Access</p>
-          <p className="mt-1 font-semibold">{location.access}</p>
+        <div className="rounded-xl border border-[var(--frame)] p-5">
+          <p className="font-mono-data text-[10px] uppercase text-[var(--ash)]">Access</p>
+          <p className="mt-1 font-semibold text-[var(--paper)]">{location.access}</p>
         </div>
-        <div className="rounded-xl border border-neutral-800 p-5">
-          <p className="text-xs uppercase text-neutral-500">Avg rating</p>
-          <p className="mt-1 font-semibold text-amber-400">{avgRating.toFixed(1)} / 10</p>
+        <div className="rounded-xl border border-[var(--frame)] p-5">
+          <p className="font-mono-data text-[10px] uppercase text-[var(--ash)]">Avg rating</p>
+          <p className="mt-1 font-semibold text-[var(--safelight)]">{avgRating.toFixed(1)} / 10</p>
         </div>
-        <div className="rounded-xl border border-neutral-800 p-5">
-          <p className="text-xs uppercase text-neutral-500">Sessions</p>
-          <p className="mt-1 font-semibold">{sessions.length}</p>
+        <div className="rounded-xl border border-[var(--frame)] p-5">
+          <p className="font-mono-data text-[10px] uppercase text-[var(--ash)]">Sessions</p>
+          <p className="mt-1 font-semibold text-[var(--paper)]">{sessions.length}</p>
         </div>
       </div>
 
@@ -65,7 +71,7 @@ export default async function LocationPage({
           href={mapsUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="mt-8 inline-block rounded-lg border border-neutral-700 px-5 py-2 text-sm hover:border-amber-400 focus:outline-2 focus:outline-amber-400"
+        className="mt-8 inline-block rounded-lg border border-[var(--frame)] px-5 py-2 text-sm text-[var(--paper)] transition hover:border-[var(--safelight)] focus:outline-2 focus:outline-[var(--safelight)]"
       >
         {mapsLabel}
       </a>

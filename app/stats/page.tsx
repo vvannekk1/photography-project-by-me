@@ -23,12 +23,12 @@ function Bar({ label, value, max, count }: { label: string; value: number; max: 
   return (
     <div className="mb-3">
       <div className="mb-1 flex justify-between text-sm">
-        <span>{label.replace("_", " ")}</span>
-        <span className="text-neutral-400">{value.toFixed(1)} avg · {count} sessions</span>
+        <span className="text-[var(--paper)]">{label.replace("_", " ")}</span>
+        <span className="font-mono-data text-[var(--ash)]">{value.toFixed(1)} avg · {count} sessions</span>
       </div>
-      <div className="h-3 w-full rounded-full bg-neutral-800">
+      <div className="h-3 w-full rounded-full bg-black/40">
         <div
-          className="h-3 rounded-full bg-amber-400"
+          className="h-3 rounded-full bg-[var(--safelight)]"
           style={{ width: `${width}%` }}
           role="img"
           aria-label={`${label}: average rating ${value.toFixed(1)} out of 10`}
@@ -48,33 +48,38 @@ export default function StatsPage() {
 
   return (
     <div>
-      <h1 className="text-3xl font-bold">Session statistics</h1>
-      <p className="mt-3 max-w-2xl text-neutral-400">
+      <p className="font-mono-data text-xs uppercase tracking-[0.2em] text-[var(--safelight)]">
+        Contact sheet data
+      </p>
+      <h1 className="mt-3 font-display text-4xl text-[var(--paper)]">
+        Session statistics
+      </h1>
+      <p className="mt-3 max-w-2xl text-[var(--ash)]">
         Based on {sessions.length} fictional photo session records. Average
         rating across all sessions: {overallAvg.toFixed(1)} / 10.
       </p>
 
       <section className="mt-10" aria-labelledby="by-time">
-        <h2 id="by-time" className="mb-4 text-xl font-semibold text-amber-400">
+        <h2 id="by-time" className="mb-4 font-display text-xl text-[var(--safelight)]">
           Average rating by time of day
         </h2>
         {byTime.map((row) => (
           <Bar key={row.label} label={row.label} value={row.avg} max={10} count={row.count} />
         ))}
-        <p className="mt-2 text-sm text-neutral-500">
+        <p className="mt-2 text-sm text-[var(--ash)]">
           Golden hour and blue hour clearly outperform midday — soft directional
           light beats harsh overhead sun.
         </p>
       </section>
 
       <section className="mt-10" aria-labelledby="by-weather">
-        <h2 id="by-weather" className="mb-4 text-xl font-semibold text-amber-400">
+        <h2 id="by-weather" className="mb-4 font-display text-xl text-[var(--safelight)]">
           Average rating by weather
         </h2>
         {byWeather.map((row) => (
           <Bar key={row.label} label={row.label} value={row.avg} max={10} count={row.count} />
         ))}
-        <p className="mt-2 text-sm text-neutral-500">
+        <p className="mt-2 text-sm text-[var(--ash)]">
           Rain consistently lowers ratings, while fog and overcast conditions
           hold up surprisingly well.
         </p>

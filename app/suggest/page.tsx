@@ -16,8 +16,6 @@ export default function SuggestPage() {
       setError("Please fill in the spot name and area.");
       return;
     }
-    // Deliberate design decision: suggestions are stored locally in the
-    // browser only. No backend, no accounts, no personal data collected.
     const suggestion = { name, area, genre, bestTime, notes, date: new Date().toISOString() };
     const existing = JSON.parse(localStorage.getItem("suggestions") || "[]");
     localStorage.setItem("suggestions", JSON.stringify([...existing, suggestion]));
@@ -28,8 +26,8 @@ export default function SuggestPage() {
   if (submitted) {
     return (
       <div className="mx-auto max-w-md py-16 text-center">
-        <h1 className="text-2xl font-bold text-amber-400">Thank you!</h1>
-        <p className="mt-4 text-neutral-400">
+        <h1 className="font-display text-3xl text-[var(--safelight)]">Thank you!</h1>
+        <p className="mt-4 text-[var(--ash)]">
           Your suggestion has been recorded. In a production version it would
           be reviewed before publishing.
         </p>
@@ -38,7 +36,7 @@ export default function SuggestPage() {
             setSubmitted(false);
             setName(""); setArea(""); setNotes("");
           }}
-          className="mt-8 rounded-lg border border-neutral-700 px-5 py-2 hover:border-amber-400"
+          className="mt-8 rounded-lg border border-[var(--frame)] px-5 py-2 text-[var(--paper)] hover:border-[var(--safelight)]"
         >
           Suggest another spot
         </button>
@@ -48,44 +46,49 @@ export default function SuggestPage() {
 
   return (
     <div className="mx-auto max-w-md">
-      <h1 className="text-3xl font-bold">Suggest a spot</h1>
-      <p className="mt-3 text-sm text-neutral-400">
+      <p className="font-mono-data text-xs uppercase tracking-[0.2em] text-[var(--safelight)]">
+        Add a frame
+      </p>
+      <h1 className="mt-3 font-display text-4xl text-[var(--paper)]">Suggest a spot</h1>
+      <p className="mt-3 text-sm text-[var(--ash)]">
         No account needed. We don&apos;t collect any personal information —
         just the spot details.
       </p>
 
       <div className="mt-8 flex flex-col gap-5">
         <div>
-          <label htmlFor="spot-name" className="mb-1 block text-sm">
-            Spot name <span className="text-amber-400">*</span>
+          <label htmlFor="spot-name" className="mb-1 block font-mono-data text-xs uppercase tracking-wide text-[var(--ash)]">
+            Spot name <span className="text-[var(--safelight)]">*</span>
           </label>
           <input
             id="spot-name"
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full rounded-lg border border-neutral-700 bg-neutral-900 px-4 py-2 focus:border-amber-400 focus:outline-none"
+            className="w-full rounded-lg border border-[var(--frame)] bg-black/30 px-4 py-2 text-[var(--paper)] focus:border-[var(--safelight)] focus:outline-none"
           />
         </div>
         <div>
-          <label htmlFor="area" className="mb-1 block text-sm">
-            Area / neighbourhood <span className="text-amber-400">*</span>
+          <label htmlFor="area" className="mb-1 block font-mono-data text-xs uppercase tracking-wide text-[var(--ash)]">
+            Area / neighbourhood <span className="text-[var(--safelight)]">*</span>
           </label>
           <input
             id="area"
             type="text"
             value={area}
             onChange={(e) => setArea(e.target.value)}
-            className="w-full rounded-lg border border-neutral-700 bg-neutral-900 px-4 py-2 focus:border-amber-400 focus:outline-none"
+            className="w-full rounded-lg border border-[var(--frame)] bg-black/30 px-4 py-2 text-[var(--paper)] focus:border-[var(--safelight)] focus:outline-none"
           />
         </div>
         <div>
-          <label htmlFor="genre" className="mb-1 block text-sm">Main genre</label>
+          <label htmlFor="genre" className="mb-1 block font-mono-data text-xs uppercase tracking-wide text-[var(--ash)]">
+            Main genre
+          </label>
           <select
             id="genre"
             value={genre}
             onChange={(e) => setGenre(e.target.value)}
-            className="w-full rounded-lg border border-neutral-700 bg-neutral-900 px-4 py-2 focus:border-amber-400 focus:outline-none"
+            className="w-full rounded-lg border border-[var(--frame)] bg-black/30 px-4 py-2 text-[var(--paper)] focus:border-[var(--safelight)] focus:outline-none"
           >
             <option value="portrait">portrait</option>
             <option value="street">street</option>
@@ -94,12 +97,14 @@ export default function SuggestPage() {
           </select>
         </div>
         <div>
-          <label htmlFor="best-time" className="mb-1 block text-sm">Best time of day</label>
+          <label htmlFor="best-time" className="mb-1 block font-mono-data text-xs uppercase tracking-wide text-[var(--ash)]">
+            Best time of day
+          </label>
           <select
             id="best-time"
             value={bestTime}
             onChange={(e) => setBestTime(e.target.value)}
-            className="w-full rounded-lg border border-neutral-700 bg-neutral-900 px-4 py-2 focus:border-amber-400 focus:outline-none"
+            className="w-full rounded-lg border border-[var(--frame)] bg-black/30 px-4 py-2 text-[var(--paper)] focus:border-[var(--safelight)] focus:outline-none"
           >
             <option value="golden_hour">golden hour</option>
             <option value="midday">midday</option>
@@ -108,23 +113,25 @@ export default function SuggestPage() {
           </select>
         </div>
         <div>
-          <label htmlFor="notes" className="mb-1 block text-sm">Notes (optional)</label>
+          <label htmlFor="notes" className="mb-1 block font-mono-data text-xs uppercase tracking-wide text-[var(--ash)]">
+            Notes (optional)
+          </label>
           <textarea
             id="notes"
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
             rows={3}
-            className="w-full rounded-lg border border-neutral-700 bg-neutral-900 px-4 py-2 focus:border-amber-400 focus:outline-none"
+            className="w-full rounded-lg border border-[var(--frame)] bg-black/30 px-4 py-2 text-[var(--paper)] focus:border-[var(--safelight)] focus:outline-none"
           />
         </div>
 
         {error && (
-          <p role="alert" className="text-sm text-red-400">{error}</p>
+          <p role="alert" className="text-sm text-[var(--safelight)]">{error}</p>
         )}
 
         <button
           onClick={handleSubmit}
-          className="rounded-lg bg-amber-400 px-6 py-3 font-semibold text-neutral-950 hover:bg-amber-300 focus:outline-2 focus:outline-offset-2 focus:outline-amber-400"
+          className="rounded-md bg-[var(--safelight)] px-6 py-3 text-sm font-semibold text-[var(--ink)] transition hover:brightness-110 focus:outline-2 focus:outline-offset-2 focus:outline-[var(--safelight)]"
         >
           Submit suggestion
         </button>
