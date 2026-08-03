@@ -78,7 +78,7 @@ export default function Home() {
       </section>
 
       <section className="grid gap-6 border-t border-[var(--frame)] pt-14 sm:grid-cols-3">
-        <div>
+        <div className="rise-in" style={{ animationDelay: "0.05s" }}>
           <p className="font-mono-data text-xs text-[var(--safelight)]">N°01</p>
           <h2 className="mt-2 font-display text-lg text-[var(--paper)]">Curated spots</h2>
           <p className="mt-2 text-sm text-[var(--ash)]">
@@ -86,7 +86,7 @@ export default function Home() {
             info for every location.
           </p>
         </div>
-        <div>
+        <div className="rise-in" style={{ animationDelay: "0.12s" }}>
           <p className="font-mono-data text-xs text-[var(--safelight)]">N°02</p>
           <h2 className="mt-2 font-display text-lg text-[var(--paper)]">Data-driven</h2>
           <p className="mt-2 text-sm text-[var(--ash)]">
@@ -94,7 +94,7 @@ export default function Home() {
             crowds affect results.
           </p>
         </div>
-        <div>
+        <div className="rise-in" style={{ animationDelay: "0.19s" }}>
           <p className="font-mono-data text-xs text-[var(--safelight)]">N°03</p>
           <h2 className="mt-2 font-display text-lg text-[var(--paper)]">Community input</h2>
           <p className="mt-2 text-sm text-[var(--ash)]">

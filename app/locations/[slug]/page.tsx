@@ -1,5 +1,7 @@
 import { notFound } from "next/navigation";
 import { getLocations, getLocationBySlug, getSessions, slugify } from "@/lib/data";
+import { genreGradient, genreIconColor } from "@/lib/genre";
+import GenreIcon from "@/components/GenreIcon";
 
 export function generateStaticParams() {
   return getLocations().map((loc) => ({ slug: slugify(loc.name) }));
@@ -16,6 +18,7 @@ export default async function LocationPage({
 
   const allLocations = getLocations();
   const frameNumber = allLocations.findIndex((l) => l.name === location.name) + 1;
+  const primaryGenre = location.genres[0];
 
   const sessions = getSessions().filter((s) => s.location_name === location.name);
   const avgRating =
@@ -29,10 +32,22 @@ export default async function LocationPage({
 
   return (
     <article>
-      <p className="font-mono-data text-xs uppercase tracking-[0.2em] text-[var(--safelight)]">
-        N°{String(frameNumber).padStart(2, "0")} · {bestTime}
-      </p>
-      <h1 className="mt-3 font-display text-4xl text-[var(--paper)]">{location.name}</h1>
+      <div
+        className="relative flex h-48 items-end overflow-hidden rounded-2xl border border-[var(--frame)] p-6"
+        style={{ backgroundImage: genreGradient(primaryGenre) }}
+      >
+        <GenreIcon
+          genre={primaryGenre}
+          className="absolute right-6 top-6 h-16 w-16 opacity-60"
+          style={{ color: genreIconColor(primaryGenre) }}
+        />
+        <div>
+          <p className="font-mono-data text-xs uppercase tracking-[0.2em] text-[var(--safelight)]">
+            N°{String(frameNumber).padStart(2, "0")} · {bestTime}
+          </p>
+          <h1 className="mt-1 font-display text-4xl text-[var(--paper)]">{location.name}</h1>
+        </div>
+      </div>
 
       <div className="mt-4 flex flex-wrap gap-2">
         {location.genres.map((g) => (

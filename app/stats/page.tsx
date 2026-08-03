@@ -2,6 +2,8 @@ import { getSessions } from "@/lib/data";
 
 export const metadata = { title: "Statistics — Dublin Photo Spots" };
 
+const MONTH_NAMES = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
 function avgBy(sessions: ReturnType<typeof getSessions>, key: "time_of_day" | "weather") {
   const groups = new Map<string, number[]>();
   for (const s of sessions) {
@@ -16,6 +18,19 @@ function avgBy(sessions: ReturnType<typeof getSessions>, key: "time_of_day" | "w
       count: ratings.length,
     }))
     .sort((a, b) => b.avg - a.avg);
+}
+
+function avgByMonth(sessions: ReturnType<typeof getSessions>) {
+  const groups = new Map<number, number[]>();
+  for (const s of sessions) {
+    if (!groups.has(s.month)) groups.set(s.month, []);
+    groups.get(s.month)!.push(s.session_rating);
+  }
+  return MONTH_NAMES.map((label, idx) => {
+    const ratings = groups.get(idx + 1) ?? [];
+    const avg = ratings.length ? ratings.reduce((a, b) => a + b, 0) / ratings.length : 0;
+    return { label, avg, count: ratings.length };
+  });
 }
 
 function Bar({ label, value, max, count }: { label: string; value: number; max: number; count: number }) {
@@ -42,6 +57,7 @@ export default function StatsPage() {
   const sessions = getSessions();
   const byTime = avgBy(sessions, "time_of_day");
   const byWeather = avgBy(sessions, "weather");
+  const byMonth = avgByMonth(sessions);
 
   const overallAvg =
     sessions.reduce((sum, s) => sum + s.session_rating, 0) / sessions.length;
@@ -82,6 +98,31 @@ export default function StatsPage() {
         <p className="mt-2 text-sm text-[var(--ash)]">
           Rain consistently lowers ratings, while fog and overcast conditions
           hold up surprisingly well.
+        </p>
+      </section>
+
+      <section className="mt-10" aria-labelledby="by-month">
+        <h2 id="by-month" className="mb-4 font-display text-xl text-[var(--safelight)]">
+          Average rating by month
+        </h2>
+        <div className="flex items-end gap-2">
+          {byMonth.map((m) => (
+            <div key={m.label} className="flex flex-1 flex-col items-center gap-1">
+              <div className="flex h-[120px] w-full items-end">
+                <div
+                  className="w-full rounded-t bg-[var(--safelight)]"
+                  style={{ height: `${Math.max((m.avg / 10) * 100, m.count ? 4 : 0)}%` }}
+                  role="img"
+                  aria-label={`${m.label}: average rating ${m.avg.toFixed(1)} out of 10, ${m.count} sessions`}
+                />
+              </div>
+              <span className="font-mono-data text-[9px] text-[var(--ash)]">{m.label}</span>
+            </div>
+          ))}
+        </div>
+        <p className="mt-3 text-sm text-[var(--ash)]">
+          Ratings shift across the year as daylight hours and typical weather
+          change with the seasons.
         </p>
       </section>
     </div>
