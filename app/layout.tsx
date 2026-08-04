@@ -28,11 +28,19 @@ export const metadata: Metadata = {
     "A directory of photography locations in Dublin: genres, best light, access info and data-driven insights.",
 };
 
+const THEME_SCRIPT =
+  "try{var t=localStorage.getItem('theme');if(t==='light'){document.documentElement.setAttribute('data-theme','light');}}catch(e){}";
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const fontVars = [fraunces.variable, plexMono.variable, inter.variable].join(" ");
+
   return (
-    <html lang="en" className={`${fraunces.variable} ${plexMono.variable} ${inter.variable}`}>
+    <html lang="en" className={fontVars} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
+      </head>
       <body className="min-h-screen bg-[var(--ink)] text-[var(--paper)] antialiased">
         <Nav />
         <main className="mx-auto max-w-5xl px-4 py-10">{children}</main>

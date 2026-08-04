@@ -2,9 +2,15 @@ import { getSessions } from "@/lib/data";
 
 export const metadata = { title: "Statistics — Dublin Photo Spots" };
 
-const MONTH_NAMES = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const MONTH_NAMES = [
+  "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
+];
 
-function avgBy(sessions: ReturnType<typeof getSessions>, key: "time_of_day" | "weather") {
+function avgBy(
+  sessions: ReturnType<typeof getSessions>,
+  key: "time_of_day" | "weather"
+) {
   const groups = new Map<string, number[]>();
   for (const s of sessions) {
     const k = s[key];
@@ -28,25 +34,47 @@ function avgByMonth(sessions: ReturnType<typeof getSessions>) {
   }
   return MONTH_NAMES.map((label, idx) => {
     const ratings = groups.get(idx + 1) ?? [];
-    const avg = ratings.length ? ratings.reduce((a, b) => a + b, 0) / ratings.length : 0;
+    const avg = ratings.length
+      ? ratings.reduce((a, b) => a + b, 0) / ratings.length
+      : 0;
     return { label, avg, count: ratings.length };
   });
 }
 
-function Bar({ label, value, max, count }: { label: string; value: number; max: number; count: number }) {
+function Bar({
+  label,
+  value,
+  max,
+  count,
+  delay,
+}: {
+  label: string;
+  value: number;
+  max: number;
+  count: number;
+  delay: number;
+}) {
   const width = Math.round((value / max) * 100);
+  const readableLabel =
+    label.replace("_", " ") +
+    ": average rating " +
+    value.toFixed(1) +
+    " out of 10";
+
   return (
     <div className="mb-3">
       <div className="mb-1 flex justify-between text-sm">
         <span className="text-[var(--paper)]">{label.replace("_", " ")}</span>
-        <span className="font-mono-data text-[var(--ash)]">{value.toFixed(1)} avg · {count} sessions</span>
+        <span className="font-mono-data text-[var(--ash)]">
+          {value.toFixed(1)} avg · {count} sessions
+        </span>
       </div>
       <div className="h-3 w-full rounded-full bg-black/40">
         <div
-          className="h-3 rounded-full bg-[var(--safelight)]"
-          style={{ width: `${width}%` }}
+          className="grow-w h-3 rounded-full bg-[var(--safelight)]"
+          style={{ width: width + "%", animationDelay: delay + "s" }}
           role="img"
-          aria-label={`${label}: average rating ${value.toFixed(1)} out of 10`}
+          aria-label={readableLabel}
         />
       </div>
     </div>
@@ -76,11 +104,21 @@ export default function StatsPage() {
       </p>
 
       <section className="mt-10" aria-labelledby="by-time">
-        <h2 id="by-time" className="mb-4 font-display text-xl text-[var(--safelight)]">
+        <h2
+          id="by-time"
+          className="mb-4 font-display text-xl text-[var(--safelight)]"
+        >
           Average rating by time of day
         </h2>
-        {byTime.map((row) => (
-          <Bar key={row.label} label={row.label} value={row.avg} max={10} count={row.count} />
+        {byTime.map((row, index) => (
+          <Bar
+            key={row.label}
+            label={row.label}
+            value={row.avg}
+            max={10}
+            count={row.count}
+            delay={index * 0.08}
+          />
         ))}
         <p className="mt-2 text-sm text-[var(--ash)]">
           Golden hour and blue hour clearly outperform midday — soft directional
@@ -89,11 +127,21 @@ export default function StatsPage() {
       </section>
 
       <section className="mt-10" aria-labelledby="by-weather">
-        <h2 id="by-weather" className="mb-4 font-display text-xl text-[var(--safelight)]">
+        <h2
+          id="by-weather"
+          className="mb-4 font-display text-xl text-[var(--safelight)]"
+        >
           Average rating by weather
         </h2>
-        {byWeather.map((row) => (
-          <Bar key={row.label} label={row.label} value={row.avg} max={10} count={row.count} />
+        {byWeather.map((row, index) => (
+          <Bar
+            key={row.label}
+            label={row.label}
+            value={row.avg}
+            max={10}
+            count={row.count}
+            delay={index * 0.08}
+          />
         ))}
         <p className="mt-2 text-sm text-[var(--ash)]">
           Rain consistently lowers ratings, while fog and overcast conditions
@@ -102,23 +150,48 @@ export default function StatsPage() {
       </section>
 
       <section className="mt-10" aria-labelledby="by-month">
-        <h2 id="by-month" className="mb-4 font-display text-xl text-[var(--safelight)]">
+        <h2
+          id="by-month"
+          className="mb-4 font-display text-xl text-[var(--safelight)]"
+        >
           Average rating by month
         </h2>
         <div className="flex items-end gap-2">
-          {byMonth.map((m) => (
-            <div key={m.label} className="flex flex-1 flex-col items-center gap-1">
-              <div className="flex h-[120px] w-full items-end">
-                <div
-                  className="w-full rounded-t bg-[var(--safelight)]"
-                  style={{ height: `${Math.max((m.avg / 10) * 100, m.count ? 4 : 0)}%` }}
-                  role="img"
-                  aria-label={`${m.label}: average rating ${m.avg.toFixed(1)} out of 10, ${m.count} sessions`}
-                />
+          {byMonth.map((month, index) => {
+            const heightPct = Math.max(
+              (month.avg / 10) * 100,
+              month.count ? 4 : 0
+            );
+            const readable =
+              month.label +
+              ": average rating " +
+              month.avg.toFixed(1) +
+              " out of 10, " +
+              month.count +
+              " sessions";
+
+            return (
+              <div
+                key={month.label}
+                className="flex flex-1 flex-col items-center gap-1"
+              >
+                <div className="flex h-[120px] w-full items-end">
+                  <div
+                    className="grow-h w-full rounded-t bg-[var(--safelight)]"
+                    style={{
+                      height: heightPct + "%",
+                      animationDelay: index * 0.05 + "s",
+                    }}
+                    role="img"
+                    aria-label={readable}
+                  />
+                </div>
+                <span className="font-mono-data text-[9px] text-[var(--ash)]">
+                  {month.label}
+                </span>
               </div>
-              <span className="font-mono-data text-[9px] text-[var(--ash)]">{m.label}</span>
-            </div>
-          ))}
+            );
+          })}
         </div>
         <p className="mt-3 text-sm text-[var(--ash)]">
           Ratings shift across the year as daylight hours and typical weather
