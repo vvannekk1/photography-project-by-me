@@ -1,4 +1,6 @@
 import { getSessions } from "@/lib/data";
+import GenreMonthHeatmap from "@/components/GenreMonthHeatmap";
+import type { HeatCell } from "@/components/GenreMonthHeatmap";
 
 export const metadata = { title: "Statistics — Dublin Photo Spots" };
 
@@ -6,6 +8,8 @@ const MONTH_NAMES = [
   "Jan", "Feb", "Mar", "Apr", "May", "Jun",
   "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
 ];
+
+const GENRES = ["portrait", "street", "landscape", "architecture"];
 
 function avgBy(
   sessions: ReturnType<typeof getSessions>,
@@ -39,6 +43,33 @@ function avgByMonth(sessions: ReturnType<typeof getSessions>) {
       : 0;
     return { label, avg, count: ratings.length };
   });
+}
+
+function buildHeatCells(sessions: ReturnType<typeof getSessions>): HeatCell[] {
+  const buckets = new Map<string, number[]>();
+  for (const s of sessions) {
+    const key = s.genre + "|" + (s.month - 1);
+    if (!buckets.has(key)) buckets.set(key, []);
+    buckets.get(key)!.push(s.session_rating);
+  }
+
+  const cells: HeatCell[] = [];
+  for (const genre of GENRES) {
+    for (let monthIndex = 0; monthIndex < 12; monthIndex++) {
+      const ratings = buckets.get(genre + "|" + monthIndex) ?? [];
+      const avg = ratings.length
+        ? ratings.reduce((a, b) => a + b, 0) / ratings.length
+        : 0;
+      cells.push({
+        genre,
+        monthIndex,
+        monthLabel: MONTH_NAMES[monthIndex],
+        avg,
+        count: ratings.length,
+      });
+    }
+  }
+  return cells;
 }
 
 function Bar({
@@ -86,6 +117,7 @@ export default function StatsPage() {
   const byTime = avgBy(sessions, "time_of_day");
   const byWeather = avgBy(sessions, "weather");
   const byMonth = avgByMonth(sessions);
+  const heatCells = buildHeatCells(sessions);
 
   const overallAvg =
     sessions.reduce((sum, s) => sum + s.session_rating, 0) / sessions.length;
@@ -197,6 +229,26 @@ export default function StatsPage() {
           Ratings shift across the year as daylight hours and typical weather
           change with the seasons.
         </p>
+      </section>
+
+      <section className="mt-14" aria-labelledby="heatmap">
+        <h2
+          id="heatmap"
+          className="mb-2 font-display text-xl text-[var(--safelight)]"
+        >
+          Genre against month
+        </h2>
+        <p className="mb-5 max-w-2xl text-sm text-[var(--ash)]">
+          Each cell is the average rating for one genre in one month. Brighter
+          cells are stronger conditions — reading across a row shows how a
+          single genre moves through the year, while reading down a column
+          compares genres within the same month.
+        </p>
+        <GenreMonthHeatmap
+          genres={GENRES}
+          months={MONTH_NAMES}
+          cells={heatCells}
+        />
       </section>
     </div>
   );
