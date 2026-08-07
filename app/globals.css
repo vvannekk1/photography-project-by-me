@@ -194,3 +194,37 @@ body {
     animation: none !important;
   }
 }
+
+/* === Aperture blade reveal on route change === */
+@keyframes aperture-open {
+  0%   { transform: rotate(-28deg) scale(0); }
+  100% { transform: rotate(0deg) scale(2); }
+}
+
+@keyframes aperture-edge-fade {
+  0%   { opacity: 0.9; }
+  100% { opacity: 0; }
+}
+
+.aperture-blades {
+  transform-origin: 50px 50px;
+  transform-box: fill-box;
+  animation: aperture-open 0.76s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+.aperture-edge {
+  animation:
+    aperture-open 0.76s cubic-bezier(0.65, 0, 0.35, 1) forwards,
+    aperture-edge-fade 0.76s ease-out forwards;
+}
+
+.a11y-reduced-motion .aperture-blades,
+.a11y-reduced-motion .aperture-edge {
+  animation: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aperture-blades, .aperture-edge {
+    animation: none !important;
+  }
+}

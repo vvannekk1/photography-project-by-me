@@ -3,6 +3,7 @@ import { Fraunces, IBM_Plex_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import AccessibilityControls from "@/components/AccessibilityControls";
+import ApertureReveal from "@/components/ApertureReveal";
 import type { PaletteItem } from "@/components/CommandPalette";
 import { getLocations, slugify } from "@/lib/data";
 
@@ -40,6 +41,12 @@ const STATIC_ITEMS: PaletteItem[] = [
     href: "/locations",
     kind: "Page",
     keywords: "browse map catalogue directory spots",
+  },
+  {
+    label: "Golden hour calculator",
+    href: "/light",
+    kind: "Page",
+    keywords: "sunrise sunset blue hour twilight times sun light planner",
   },
   {
     label: "Session statistics",
@@ -95,6 +102,7 @@ export default function RootLayout({
           Dublin Photo Spots — student project, all session data is fictional.
         </footer>
         <AccessibilityControls />
+        <ApertureReveal />
       </body>
     </html>
   );

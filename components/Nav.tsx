@@ -5,9 +5,10 @@ import type { PaletteItem } from "@/components/CommandPalette";
 
 const LINKS = [
   { href: "/locations", label: "Locations" },
+  { href: "/light", label: "Light" },
   { href: "/stats", label: "Statistics" },
   { href: "/predict", label: "Predictor" },
-  { href: "/suggest", label: "Suggest a Spot" },
+  { href: "/suggest", label: "Suggest" },
 ];
 
 const LINK_CLASS =
@@ -28,7 +29,7 @@ export default function Nav({ paletteItems }: { paletteItems: PaletteItem[] }) {
         </Link>
 
         <div className="flex items-center gap-4">
-          <div className="hidden flex-wrap gap-6 font-mono-data text-xs uppercase tracking-[0.15em] text-[var(--ash)] md:flex">
+          <div className="hidden flex-wrap gap-5 font-mono-data text-xs uppercase tracking-[0.15em] text-[var(--ash)] md:flex">
             {LINKS.map((link) => (
               <Link key={link.href} href={link.href} className={LINK_CLASS}>
                 {link.label}
