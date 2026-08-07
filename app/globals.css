@@ -228,3 +228,59 @@ body {
     animation: none !important;
   }
 }
+
+/* === Focus pull: the hovered card stays sharp, its neighbours defocus === */
+.focus-subject {
+  transition:
+    filter 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.3s ease;
+  will-change: filter, transform;
+}
+
+@media (hover: hover) {
+  .focus-field:hover .focus-subject:not(:hover) {
+    filter: blur(3px) saturate(0.8);
+    opacity: 0.5;
+    transform: scale(0.985);
+  }
+
+  .focus-field .focus-subject:hover {
+    filter: none;
+    opacity: 1;
+    transform: translateY(-4px) scale(1.015);
+  }
+}
+
+.focus-field:focus-within .focus-subject:not(:focus) {
+  filter: blur(3px) saturate(0.8);
+  opacity: 0.5;
+  transform: scale(0.985);
+}
+
+.focus-field .focus-subject:focus {
+  filter: none;
+  opacity: 1;
+  transform: translateY(-4px) scale(1.015);
+}
+
+.a11y-reduced-motion .focus-subject,
+.a11y-reduced-motion .focus-field:hover .focus-subject:not(:hover),
+.a11y-reduced-motion .focus-field:focus-within .focus-subject:not(:focus) {
+  filter: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .focus-subject,
+  .focus-field:hover .focus-subject:not(:hover),
+  .focus-field:focus-within .focus-subject:not(:focus) {
+    filter: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}

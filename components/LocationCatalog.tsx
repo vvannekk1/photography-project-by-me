@@ -14,6 +14,15 @@ function slugify(name: string): string {
 const GENRES = ["all", "portrait", "street", "landscape", "architecture"];
 const ACCESS = ["all", "easy", "moderate", "hard"];
 
+const FIELD_CLASS =
+  "rounded-lg border border-[var(--frame)] bg-black/30 px-4 py-2 text-[var(--paper)] focus:border-[var(--safelight)] focus:outline-none";
+
+const LABEL_CLASS =
+  "mb-1 block font-mono-data text-xs uppercase tracking-wide text-[var(--ash)]";
+
+const CARD_CLASS =
+  "focus-subject rise-in relative overflow-hidden rounded-xl border border-[var(--frame)] p-6 hover:border-[var(--safelight)] focus:outline-2 focus:outline-[var(--safelight)]";
+
 export default function LocationCatalog({ locations }: { locations: Location[] }) {
   const router = useRouter();
   const [search, setSearch] = useState("");
@@ -37,14 +46,14 @@ export default function LocationCatalog({ locations }: { locations: Location[] }
       window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
       document.documentElement.classList.contains("a11y-reduced-motion");
 
-    setTimeout(() => router.push(`/locations/${slug}`), prefersReduced ? 0 : 220);
+    setTimeout(() => router.push("/locations/" + slug), prefersReduced ? 0 : 220);
   }
 
   return (
     <div>
       <div className="mb-8 flex flex-col gap-4 sm:flex-row">
         <div className="flex-1">
-          <label htmlFor="search" className="mb-1 block font-mono-data text-xs uppercase tracking-wide text-[var(--ash)]">
+          <label htmlFor="search" className={LABEL_CLASS}>
             Search by name
           </label>
           <input
@@ -53,18 +62,18 @@ export default function LocationCatalog({ locations }: { locations: Location[] }
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="e.g. Phoenix Park"
-            className="w-full rounded-lg border border-[var(--frame)] bg-black/30 px-4 py-2 text-[var(--paper)] placeholder:text-[var(--ash)] focus:border-[var(--safelight)] focus:outline-none"
+            className={FIELD_CLASS + " w-full placeholder:text-[var(--ash)]"}
           />
         </div>
         <div>
-          <label htmlFor="genre" className="mb-1 block font-mono-data text-xs uppercase tracking-wide text-[var(--ash)]">
+          <label htmlFor="genre" className={LABEL_CLASS}>
             Genre
           </label>
           <select
             id="genre"
             value={genre}
             onChange={(e) => setGenre(e.target.value)}
-            className="rounded-lg border border-[var(--frame)] bg-black/30 px-4 py-2 text-[var(--paper)] focus:border-[var(--safelight)] focus:outline-none"
+            className={FIELD_CLASS}
           >
             {GENRES.map((g) => (
               <option key={g} value={g}>{g}</option>
@@ -72,14 +81,14 @@ export default function LocationCatalog({ locations }: { locations: Location[] }
           </select>
         </div>
         <div>
-          <label htmlFor="access" className="mb-1 block font-mono-data text-xs uppercase tracking-wide text-[var(--ash)]">
+          <label htmlFor="access" className={LABEL_CLASS}>
             Access
           </label>
           <select
             id="access"
             value={access}
             onChange={(e) => setAccess(e.target.value)}
-            className="rounded-lg border border-[var(--frame)] bg-black/30 px-4 py-2 text-[var(--paper)] focus:border-[var(--safelight)] focus:outline-none"
+            className={FIELD_CLASS}
           >
             {ACCESS.map((a) => (
               <option key={a} value={a}>{a}</option>
@@ -100,17 +109,17 @@ export default function LocationCatalog({ locations }: { locations: Location[] }
           </p>
         </div>
       ) : (
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="focus-field grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.map((loc, i) => {
             const slug = slugify(loc.name);
             const primaryGenre = loc.genres[0];
             return (
               <Link
                 key={loc.name}
-                href={`/locations/${slug}`}
+                href={"/locations/" + slug}
                 onClick={(e) => handleCardClick(e, slug)}
-                style={{ animationDelay: `${Math.min(i * 0.05, 0.4)}s` }}
-                className="rise-in relative overflow-hidden rounded-xl border border-[var(--frame)] p-6 transition hover:-translate-y-0.5 hover:border-[var(--safelight)] focus:outline-2 focus:outline-[var(--safelight)]"
+                style={{ animationDelay: Math.min(i * 0.05, 0.4) + "s" }}
+                className={CARD_CLASS}
               >
                 {flashSlug === slug && (
                   <span
@@ -129,9 +138,12 @@ export default function LocationCatalog({ locations }: { locations: Location[] }
                   />
                 </div>
                 <p className="font-mono-data text-[10px] uppercase tracking-[0.2em] text-[var(--safelight)]">
-                  N°{String(i + 1).padStart(2, "0")} · {loc.best_time.replace("_", " ")}
+                  N&#176;{String(i + 1).padStart(2, "0")} ·{" "}
+                  {loc.best_time.replace("_", " ")}
                 </p>
-                <h2 className="mt-2 font-display text-lg text-[var(--paper)]">{loc.name}</h2>
+                <h2 className="mt-2 font-display text-lg text-[var(--paper)]">
+                  {loc.name}
+                </h2>
                 <div className="mt-3 flex flex-wrap gap-2">
                   {loc.genres.map((g) => (
                     <span
@@ -142,7 +154,9 @@ export default function LocationCatalog({ locations }: { locations: Location[] }
                     </span>
                   ))}
                 </div>
-                <p className="mt-3 text-sm text-[var(--ash)]">Access: {loc.access}</p>
+                <p className="mt-3 text-sm text-[var(--ash)]">
+                  Access: {loc.access}
+                </p>
               </Link>
             );
           })}
