@@ -284,3 +284,56 @@ body {
     transition: none !important;
   }
 }
+
+/* === Skip link: hidden until focused by keyboard === */
+.skip-link {
+  position: absolute;
+  left: 50%;
+  top: -100px;
+  z-index: 70;
+  transform: translateX(-50%);
+  border-radius: 0 0 0.5rem 0.5rem;
+  background-color: var(--safelight);
+  color: var(--ink);
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: 2px solid var(--paper);
+  outline-offset: 2px;
+}
+
+/* === Consistent keyboard focus ring everywhere === */
+:focus-visible {
+  outline: 2px solid var(--safelight);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Mouse clicks should not leave a ring behind */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* === Minimum touch target for small controls === */
+@media (pointer: coarse) {
+  button, a, select, input[type="date"] {
+    min-height: 44px;
+  }
+}
+
+/* === Honour forced-colors / Windows high contrast === */
+@media (forced-colors: active) {
+  .focus-subject,
+  .grow-w,
+  .grow-h {
+    forced-color-adjust: none;
+  }
+  :focus-visible {
+    outline: 2px solid CanvasText;
+  }
+}

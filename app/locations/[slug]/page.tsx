@@ -57,19 +57,32 @@ export default async function LocationPage({
   return (
     <article>
       <div
-        className="rise-in relative flex h-48 items-end overflow-hidden rounded-2xl border border-[var(--frame)] p-6"
-        style={{ backgroundImage: genreGradient(primaryGenre) }}
+        className="rise-in relative flex h-64 items-end overflow-hidden rounded-2xl border border-[var(--frame)] p-6"
+        style={{
+          backgroundImage:
+            "url('/locations/" + slug + ".jpg'), " + genreGradient(primaryGenre),
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
       >
+        <span
+          aria-hidden="true"
+          className="absolute inset-0"
+          style={{
+            backgroundImage:
+              "linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.15) 60%, transparent)",
+          }}
+        />
         <GenreIcon
           genre={primaryGenre}
-          className="absolute right-6 top-6 h-16 w-16 opacity-60"
+          className="absolute right-6 top-6 h-14 w-14 opacity-70"
           style={{ color: genreIconColor(primaryGenre) }}
         />
-        <div>
+        <div className="relative">
           <p className="font-mono-data text-xs uppercase tracking-[0.2em] text-[var(--safelight)]">
             N&#176;{String(frameNumber).padStart(2, "0")} · {bestTime}
           </p>
-          <h1 className="mt-1 font-display text-4xl text-[var(--paper)]">
+          <h1 className="mt-1 font-display text-4xl text-[#ECE6D6]">
             {location.name}
           </h1>
         </div>
