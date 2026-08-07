@@ -337,3 +337,12 @@ body {
     outline: 2px solid CanvasText;
   }
 }
+
+/* === Brand mark: white artwork, inverted for the light theme === */
+.brand-mark {
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+[data-theme="light"] .brand-mark {
+  filter: invert(1);
+}

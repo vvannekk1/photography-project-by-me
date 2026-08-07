@@ -4,6 +4,7 @@ import "./globals.css";
 import Nav from "@/components/Nav";
 import AccessibilityControls from "@/components/AccessibilityControls";
 import ApertureReveal from "@/components/ApertureReveal";
+import ScrollProgress from "@/components/ScrollProgress";
 import type { PaletteItem } from "@/components/CommandPalette";
 import { getLocations, slugify } from "@/lib/data";
 
@@ -26,9 +27,18 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Dublin Photo Spots",
+  title: {
+    default: "PeakSesh1n — Dublin Photo Spots",
+    template: "%s · PeakSesh1n",
+  },
   description:
     "A directory of photography locations in Dublin: genres, best light, access info and data-driven insights.",
+  openGraph: {
+    title: "PeakSesh1n — Dublin Photo Spots",
+    description:
+      "Fifteen Dublin photography locations, golden hour times and a session rating model.",
+    type: "website",
+  },
 };
 
 const THEME_SCRIPT =
@@ -101,11 +111,22 @@ export default function RootLayout({
         </a>
         <Nav paletteItems={paletteItems} />
         <main id="main-content" className="mx-auto max-w-5xl px-4 py-10">{children}</main>
-        <footer className="border-t border-[var(--frame)] py-6 text-center font-mono-data text-xs text-[var(--ash)]">
-          Dublin Photo Spots — student project, all session data is fictional.
+        <footer className="border-t border-[var(--frame)] py-8 text-center">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/logo.png"
+            alt="PeakSesh1n"
+            width={450}
+            height={240}
+            className="brand-mark mx-auto h-7 w-auto opacity-50"
+          />
+          <p className="mt-3 font-mono-data text-xs text-[var(--ash)]">
+            Dublin Photo Spots — student project, all session data is fictional.
+          </p>
         </footer>
         <AccessibilityControls />
         <ApertureReveal />
+        <ScrollProgress />
       </body>
     </html>
   );
